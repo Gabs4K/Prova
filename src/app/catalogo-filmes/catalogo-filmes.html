@@ -1,0 +1,34 @@
+<body>
+
+<ul>
+    @for (item of filmes; track $index) {
+        <li (click)="selecionada = item"> {{item}}</li>
+    }
+  
+    <!-- @for (item of filmes; track $index) {
+        <button (click)="like = !like">
+    {{ like ? ' Adicionar aos favoritos' : '♡ Remover dos favoritos' }}
+    </button>
+    } -->
+        
+
+</ul>
+<div class="amarelo">
+    <input [(ngModel)]="nomeFilme" placeholder="Digatai-vos o filme desejado">
+    <button (click) ="adicionarItem(nomeFilme)">Adicionar Filme</button>
+
+@if (selecionada) {
+    <p [class] = "{'favorito' : favorito, 'nFavorito' : !favorito}">Você escolheu: {{selecionada}}</p>
+   <p>Contador: {{ contador }}</p>
+    <button (click)="incrementar()">+</button>
+    <button (click)="decrementar()">-</button>
+    <button (click)="favorito = !favorito">
+    {{ favorito ? '⭐ Adicionar aos favoritos' : '✴️ Remover dos favoritos' }}
+
+    </button>
+}
+@else {
+    <p>Nenhum filme selecionado chefia, escolha logo</p>
+}
+</div>
+</body>
